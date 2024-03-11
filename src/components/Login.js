@@ -1,10 +1,30 @@
 import React, {useState} from 'react';
 import Header from "./Header";
-
+import valid from '../utils/validation'
 
 function Login(props) {
 
     const [isSignIn , setIsSignIn] = useState(true)
+    const[email , setEmail] = useState('')
+    const [password , setPassword]= useState('')
+    const [username , setUserName] = useState('')
+
+
+    const [errMsg ,setErrMsg] = useState('')
+
+
+    function handleSubmit(e){
+        e.preventDefault()
+    }
+
+
+    //  sign in or sign up
+    function handleSign(){
+       const message = valid(email , password)
+        setErrMsg(message)
+    }
+
+
 
     return (
         <div >
@@ -15,7 +35,7 @@ function Login(props) {
             </div>
 
         {/*     form  */}
-            <form className="p-12 bg-black absolute md:w-6/12 sm:w-6/12 lg:w-3/12 my-36  mx-auto text-white right-0 left-0 bg-opacity-65 ">
+            <form onSubmit={handleSubmit} className="p-12 bg-black absolute md:w-6/12 sm:w-6/12 lg:w-3/12 my-36  mx-auto text-white right-0 left-0 bg-opacity-65 ">
 
                 {/* sign in or sign up text*/}
 
@@ -23,20 +43,28 @@ function Login(props) {
 
                 {/*If user is signing up show him username input*/}
                 {
-                    !isSignIn ? <input type="text" placeholder="User Name"
+                    !isSignIn ? <input type="text" placeholder="User Name" value={username}
+                                       onChange={(e)=>setUserName(e.target.value)}
                                        className="p-4 rounded-md my-2 w-full bg-gray-700"/> : ''
                 }
 
                 {/* email */}
-                <input type="email" placeholder="Email Address" className="p-3 rounded-md my-2 w-full bg-gray-700"/>
+                <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email Address" className="p-3 rounded-md my-2 w-full bg-gray-700"/>
 
                 {/* pasword*/}
 
-                <input type="password" placeholder="Password" className="p-4 my-2 w-full  bg-gray-700 rounded-md"/>
+                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" className="p-4 my-2 w-full  bg-gray-700 rounded-md"/>
 
                 {/* sign in*/}
 
-                <button className="p-4 my-3 bg-red-700 w-full rounded-full">{isSignIn ? 'Sign In' : 'Sign Up'}</button>
+                <button onClick={handleSign} className="p-4 my-3 bg-red-700 w-full rounded-full">{isSignIn ? 'Sign In' : 'Sign Up'}</button>
+
+
+                {/* Error message shown here*/}
+
+                {
+                    errMsg ? <h1 className="text-red-700 text-2xl font-bold">{errMsg}</h1> : ''
+                }
 
 
                 <p className="py-4 cursor-pointer" onClick={()=>{
