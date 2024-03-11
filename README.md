@@ -12,6 +12,8 @@
 - implement sign in user api
 - created redux store with user slice
 - implemented sign out
+- updated profile
+- Fixed a bug (redirect and refactored useeffect in header component)
 
 
 # Features

@@ -15,9 +15,6 @@ function Header(props) {
     function handleSignOut(){
         signOut(auth).then(() => {
             // if sign out is successful navigate to "/"
-            navigate('/')
-
-
         }).catch((error) => {
             // if error happens pass it to navigate('*') which is an error page
             navigate('*')

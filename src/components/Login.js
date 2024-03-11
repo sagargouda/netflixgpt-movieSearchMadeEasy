@@ -41,8 +41,6 @@ function Login(props) {
                     updateProfile(user, {
                         displayName: username , photoURL: "https://avatars.githubusercontent.com/u/71541647?v=4"
                     }).then(() => {
-                        // once my profile is updated then navigate
-                        navigate("/browse")
 
                     //     we update here to update displayurl and username and also we destructure from auth not the user because auth is new value
                         const {uid , email , displayName, photoURL} = auth.currentUser
@@ -68,7 +66,6 @@ function Login(props) {
                     // Signed in
                     const user = userCredential.user;
                     // console.log(user)
-                    navigate("/browse")
                 })
                 .catch((error) => {
                     const errorCode = error.code;
