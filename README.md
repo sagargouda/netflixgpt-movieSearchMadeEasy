@@ -5,6 +5,13 @@
 - Header
 - Login Form
 - Sign up Form
+- form validation
+- firebase setup
+- deploying my app to firebase
+- Created Signup user Account
+- implement sign in user api
+- created redux store with user slice
+- implemented sign out
 
 
 # Features

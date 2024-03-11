@@ -1,31 +1,92 @@
 import React, {useState} from 'react';
 import Header from "./Header";
 import valid from '../utils/validation'
+import {  createUserWithEmailAndPassword ,signInWithEmailAndPassword , updateProfile } from "firebase/auth";
+import {auth} from '../utils/firebase'
+import {useNavigate} from "react-router-dom";
+import {addUser} from "../utils/userSlice";
+import {useDispatch} from "react-redux";
+
 
 function Login(props) {
+    // for navigating when user sign in into browse page
+    const navigate = useNavigate()
+
+    const dispatch = useDispatch()
 
     const [isSignIn , setIsSignIn] = useState(true)
     const[email , setEmail] = useState('')
     const [password , setPassword]= useState('')
     const [username , setUserName] = useState('')
-
-
-    const [errMsg ,setErrMsg] = useState('')
-
-
-    function handleSubmit(e){
-        e.preventDefault()
-    }
-
+    const [errMsg ,setErrMsg] = useState(null)
 
     //  sign in or sign up
     function handleSign(){
        const message = valid(email , password)
         setErrMsg(message)
+
+    //   if there is a message then just return or else just sign in or sign up my user
+    if(message) return;
+
+        if(!isSignIn){
+
+            //  signing up my user here (first time)
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    // console.log(user)
+
+                    //  once i sign up i will also update user profile
+
+                    updateProfile(user, {
+                        displayName: username , photoURL: "https://avatars.githubusercontent.com/u/71541647?v=4"
+                    }).then(() => {
+                        // once my profile is updated then navigate
+                        navigate("/browse")
+
+                    //     we update here to update displayurl and username and also we destructure from auth not the user because auth is new value
+                        const {uid , email , displayName, photoURL} = auth.currentUser
+                        dispatch(addUser({uid:uid , email:email , displayName:displayName , photoURL: photoURL}))
+
+                    }).catch((error) => {
+                        setErrMsg(error.message)
+                    });
+
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setErrMsg(errorCode + "-" + errorMessage)
+
+                });
+        }
+        else{
+        //     signing in users here
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    // console.log(user)
+                    navigate("/browse")
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setErrMsg(errorCode + "-" + errorMessage)
+                });
+
+
+
+
+
+
+
+
+
+
+        }
     }
-
-
-
     return (
         <div >
             <Header/>
@@ -35,7 +96,7 @@ function Login(props) {
             </div>
 
         {/*     form  */}
-            <form onSubmit={handleSubmit} className="p-12 bg-black absolute md:w-6/12 sm:w-6/12 lg:w-3/12 my-36  mx-auto text-white right-0 left-0 bg-opacity-65 ">
+            <form onSubmit={(e)=>e.preventDefault()} className="p-12 bg-black absolute md:w-6/12 sm:w-6/12 lg:w-3/12 my-36  mx-auto text-white right-0 left-0 bg-opacity-65 ">
 
                 {/* sign in or sign up text*/}
 
@@ -63,7 +124,7 @@ function Login(props) {
                 {/* Error message shown here*/}
 
                 {
-                    errMsg ? <h1 className="text-red-700 text-2xl font-bold">{errMsg}</h1> : ''
+                    errMsg ? <h1 className="text-red-700 text-2xl font-bold">{errMsg}</h1> : null
                 }
 
 
