@@ -3,15 +3,11 @@ import Header from "./Header";
 import valid from '../utils/validation'
 import {  createUserWithEmailAndPassword ,signInWithEmailAndPassword , updateProfile } from "firebase/auth";
 import {auth} from '../utils/firebase'
-import {useNavigate} from "react-router-dom";
 import {addUser} from "../utils/userSlice";
 import {useDispatch} from "react-redux";
 
 
 function Login(props) {
-    // for navigating when user sign in into browse page
-    const navigate = useNavigate()
-
     const dispatch = useDispatch()
 
     const [isSignIn , setIsSignIn] = useState(true)

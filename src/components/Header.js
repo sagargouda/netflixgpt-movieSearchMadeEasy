@@ -25,7 +25,7 @@ function Header(props) {
 
     useEffect(() => {
         // added event listner
-        onAuthStateChanged(auth, (user) => {
+     const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 // if user is signed in (if my user is present)
                 const {uid , email , displayName, photoURL} = user;
@@ -43,6 +43,9 @@ function Header(props) {
             }
         });
 
+    //   this will be called when component unmounts like navigating from one page to other
+        return () => unsubscribe()
+
     }, []);
 
 
@@ -54,9 +57,9 @@ function Header(props) {
 
         {/*    sign out button */}
             { user && (
-                <div className=" flex p-2 justify-between mt-6 cursor-pointer" onClick={handleSignOut}>
-                    <img className="w-12 h-12" src={user?.photoURL} alt=""/>
-                    <FaSignOutAlt title="Sign out" size={20}/>
+                <div className=" flex p-2 mt-0 md:w-2/12 sm:w-2/12 lg:w-1/12 justify-around" >
+                    <img className="w-12 h-12 rounded-3xl" src={user?.photoURL} alt=""/>
+                    <FaSignOutAlt className="cursor-pointer mt-3" onClick={handleSignOut} title="Sign out" size={23}/>
                 </div>
             )
 
