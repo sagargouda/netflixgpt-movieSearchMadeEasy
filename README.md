@@ -14,6 +14,8 @@
 - implemented sign out
 - updated profile
 - Fixed a bug (redirect and refactored useeffect in header component)
+- Header photo fixed 
+- made api call to tmdb and got a movielist and stored it in my store by creating movie slice
 
 
 # Features
