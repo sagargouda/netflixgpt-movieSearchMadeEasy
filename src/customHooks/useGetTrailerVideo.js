@@ -3,12 +3,10 @@ import {API_OPTIONS} from "../constants/constants";
 import {addTrailerVideo} from "../utils/movieSlice";
 import {useEffect} from "react";
 
+//  custom hook
 function useGetTrailerVideo(movieId){
 
     const dispatch = useDispatch()
-
-//  we will use that trailer id and dynamically set trailer id in youtube
-    const youtube = useSelector(store=>store.movies?.trailerVideo)
 
 //  fetching trailer video
     const getMovieTrailer = async() => {
@@ -22,7 +20,7 @@ function useGetTrailerVideo(movieId){
             return movie.type === "Trailer"
         })
         const trailer = filterData.length ? filterData[0] : json.results[0]
-        console.log(trailer)
+        // console.log(trailer)
 
         //     dispatching an action to store trailer id in redux store in movie slice)
         dispatch(addTrailerVideo(trailer))
@@ -33,9 +31,6 @@ function useGetTrailerVideo(movieId){
         getMovieTrailer()
     }, []);
 
-
-//     return youtube which we selected above
-    return youtube
 
 
 }

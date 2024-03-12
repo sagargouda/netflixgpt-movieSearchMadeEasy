@@ -9,7 +9,7 @@ function MainContainer(props) {
     //  in redux store one first time it is null , so did a early return
     if(movies === null) return
     // main movie
-    const mainMovie = movies[2];
+    const mainMovie = movies[3];
     // console.log(mainMovie)
 
     //  destructuring
