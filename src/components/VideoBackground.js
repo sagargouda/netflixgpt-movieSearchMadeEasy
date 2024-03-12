@@ -1,8 +1,16 @@
-import React from 'react';
+import useGetTrailerVideo from "../customHooks/useGetTrailerVideo";
 
-function VideoBackground(props) {
+function VideoBackground({movieId}) {
+    const youtube = useGetTrailerVideo(movieId)
     return (
-        <div></div>
+        <div>
+
+            <iframe  src={"https://www.youtube.com/embed/" + youtube?.key}
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                   ></iframe>
+
+        </div>
     );
 }
 

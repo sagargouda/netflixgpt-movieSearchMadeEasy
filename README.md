@@ -33,6 +33,9 @@
   -  Video Background 
   -   video Title
   - overlapped them
+ - Also fetched trailer from Videos api by filtering only Trailer
+ - created a custom hook for getting trailer video , we fetch youtube video dynamically
+
 
 
 

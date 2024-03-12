@@ -9,16 +9,16 @@ function MainContainer(props) {
     //  in redux store one first time it is null , so did a early return
     if(movies === null) return
     // main movie
-    const mainMovie = movies[0];
+    const mainMovie = movies[2];
     // console.log(mainMovie)
 
     //  destructuring
-    const {original_title , overview} = mainMovie
+    const {original_title , overview , id} = mainMovie
 
     return (
         <div>
             <VideoTitle title={original_title} overview={overview} />
-            <VideoBackground/>
+            <VideoBackground movieId ={id}/>
         </div>
     );
 }
