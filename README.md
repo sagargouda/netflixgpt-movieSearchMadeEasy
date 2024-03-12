@@ -16,6 +16,24 @@
 - Fixed a bug (redirect and refactored useeffect in header component)
 - Header photo fixed 
 - made api call to tmdb and got a movielist and stored it in my store by creating movie slice
+- created custom hook for fetching data from tmdb movielist api
+
+- made plan for structuring UI (2 section)
+- 1) Main video part we have trending movie and it's trailer is running constantly
+- 2) Movie Lists or secondary container
+
+- Main Container
+     - video background
+     - video title
+- Movie List container or secondaryContainer
+     - MovieList * N (rows)
+        - Cards * N (Many cards)
+
+- First I built Main container
+  -  Video Background 
+  -   video Title
+  - overlapped them
+
 
 
 # Features
