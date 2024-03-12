@@ -37,6 +37,17 @@
  - created a custom hook for getting trailer video , we fetch youtube video dynamically
  - built video background same like netflix 
 
+- Second I built secondary container
+- Movie Lists (multiple movielists)
+  - popular
+  - trending
+  - now playing
+  - horror
+  
+- Cards
+  - in each movie list we have multiple movie cards
+
+- 2 components 1) movie list , 2) movie card
 
 
 

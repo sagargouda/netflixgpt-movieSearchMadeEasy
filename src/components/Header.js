@@ -59,7 +59,7 @@ function Header(props) {
             { user && (
                 <div className=" flex p-2 mt-0 md:w-2/12 sm:w-2/12 lg:w-1/12 justify-around" >
                     <img className="w-12 h-12 rounded-3xl" src={user?.photoURL} alt=""/>
-                    <FaSignOutAlt className="cursor-pointer mt-3" onClick={handleSignOut} title="Sign out" size={23}/>
+                    <FaSignOutAlt className="cursor-pointer mt-3" onClick={handleSignOut} title="Sign out" size={23} color="white"/>
                 </div>
             )
 
