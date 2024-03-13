@@ -7,9 +7,9 @@ function MainContainer(props) {
     //  this movies has 20 movies but in title i just need 1
     const movies = useSelector(store=>store.movies?.nowPlayingMovies)
     //  in redux store one first time it is null , so did a early return
-    if(movies === null) return
+    if(!movies) return;
     // main movie
-    const mainMovie = movies[3];
+    const mainMovie = movies[0];
     // console.log(mainMovie)
 
     //  destructuring

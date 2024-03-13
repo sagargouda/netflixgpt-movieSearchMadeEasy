@@ -8,7 +8,6 @@ function Browse(props) {
 
  useNowPlayingMovies()
 
-
     return (
         <div>
            <Header/>
