@@ -7,6 +7,10 @@ function SecondaryContainer(props) {
     return (
         <div>
             <MovieList title={"Now Playing"} movies={movies}/>
+            <MovieList title={"Trending"} movies={movies}/>
+            <MovieList title={"Popular"} movies={movies}/>
+            <MovieList title={"Upcoming"} movies={movies}/>
+            <MovieList title={"Horror"} movies={movies}/>
         </div>
     );
 }
