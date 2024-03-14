@@ -48,9 +48,11 @@
   - in each movie list we have multiple movie cards
 
 - 2 components 1) movie list , 2) movie card
-
+- made 4 diffrent movie lists
 
 - now next is gpt search recommendation system
+- idea was creating a button kind of thing in header and when i click that it should go to new page wheere gpt search is present
+- 
 
 
 
