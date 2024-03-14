@@ -6,11 +6,13 @@ import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {addUser, removeUser} from "../utils/userSlice";
 import {useDispatch} from "react-redux";
+import {toggleGptSearchView} from '../utils/gptSlice'
 function Header(props) {
     const navigate = useNavigate()
 //  for dispatching an action
     const dispatch = useDispatch()
     const user = useSelector(store=>store.user)
+
 
     function handleSignOut(){
         signOut(auth).then(() => {
@@ -20,6 +22,13 @@ function Header(props) {
             navigate('*')
         });
     }
+
+    // button click
+function handleGpt(){
+//          toggling gpt search , so dispatching ana action
+dispatch(toggleGptSearchView())
+}
+
 
     //  changed use effect here now header is in whole app also it is in router provider
 
@@ -57,9 +66,14 @@ function Header(props) {
 
         {/*    sign out button */}
             { user && (
-                <div className=" flex p-2 mt-0 md:w-2/12 sm:w-2/12 lg:w-1/12 justify-around" >
-                    <img className="w-12 h-12 rounded-3xl" src={user?.photoURL} alt=""/>
-                    <FaSignOutAlt className="cursor-pointer mt-3" onClick={handleSignOut} title="Sign out" size={23} color="white"/>
+                <div className=" flex p-2 mt-0 md:w-2/12 sm:w-2/12 lg:w-2/12  gap-4" >
+                   <button className="py-2 px-4 mx-2 my-2 rounded-md bg-purple-800 text-white" onClick={handleGpt}>GPT Search</button>
+                    <div className="flex flex-row gap-4 w-[50%] mt-4">
+                        <img className="w-12 h-12 rounded-3xl" src={user?.photoURL} alt=""/>
+                        <FaSignOutAlt className="cursor-pointer mt-3"  title="Sign out" size={23}
+                                      color="white"/>
+                    </div>
+
                 </div>
             )
 
