@@ -50,6 +50,9 @@
 - 2 components 1) movie list , 2) movie card
 
 
+- now next is gpt search recommendation system
+
+
 
 # Features
 - Login / Sign Up 
