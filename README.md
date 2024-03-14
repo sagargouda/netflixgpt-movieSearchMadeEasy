@@ -52,7 +52,8 @@
 
 - now next is gpt search recommendation system
 - idea was creating a button kind of thing in header and when i click that it should go to new page wheere gpt search is present
-- 
+- new page for gpt search which has a search bar and it suggests movie
+- gpt search bar and suggestions
 
 
 
