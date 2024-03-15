@@ -13,7 +13,7 @@ function useUpcomingMovies(){
         const data= await fetch('https://api.themoviedb.org/3/movie/upcoming?page=1', API_OPTIONS)
 
         const json = await data.json();
-        console.log(json.results)
+        // console.log(json.results)
         //   dispatching an action and storing it in my store (movie slice)
         dispatch(addUpcomingMovies(json.results))
     }

@@ -7,11 +7,14 @@ import {useSelector} from "react-redux";
 import {addUser, removeUser} from "../utils/userSlice";
 import {useDispatch} from "react-redux";
 import {toggleGptSearchView} from '../utils/gptSlice'
+import {SUPPORTED_LANGUAGES} from "../constants/constants";
+import {changeLanguage} from "../utils/configSlice";
 function Header(props) {
     const navigate = useNavigate()
 //  for dispatching an action
     const dispatch = useDispatch()
     const user = useSelector(store=>store.user)
+
 
 
     function handleSignOut(){
@@ -59,6 +62,12 @@ dispatch(toggleGptSearchView())
 
 
 
+    // handleLanguageChange function
+    function handleLanguageChange(e){
+        // console.log(e.target.value)
+        dispatch(changeLanguage(e.target.value))
+    }
+
 
     return (
         <div className="absolute flex justify-between w-full px-8 py-2 bg-gradient-to-b from-black max-sm-[500px]:px-0 z-10 ">
@@ -66,8 +75,14 @@ dispatch(toggleGptSearchView())
 
         {/*    sign out button */}
             { user && (
-                <div className=" flex p-2 mt-0 md:w-2/12 sm:w-2/12 lg:w-2/12  gap-4" >
-                   <button className="py-2 px-4 mx-2 my-2 rounded-md bg-purple-800 text-white" onClick={handleGpt}>GPT Search</button>
+                <div className=" flex p-2 mt-0 md:w-2/12 sm:w-2/12 lg:w-3/12  gap-10" >
+                    <select className="p-2 bg-gray-900 text-white m-2" onChange={handleLanguageChange}>
+                        {
+                            SUPPORTED_LANGUAGES.map(lang => <option key={lang.identifier} value={lang.identifier }>{lang.name}</option>)
+                        }
+                    </select>
+
+                    <button className="py-2 px-4 mx-2 my-2 rounded-md bg-purple-800 text-white" onClick={handleGpt}>GPT Search</button>
                     <div className="flex flex-row gap-4 w-[50%] mt-4">
                         <img className="w-12 h-12 rounded-3xl" src={user?.photoURL} alt=""/>
                         <FaSignOutAlt className="cursor-pointer mt-3"  title="Sign out" size={23}

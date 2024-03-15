@@ -9,3 +9,10 @@ export const API_OPTIONS={
 };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500"
+
+// this is for language constants
+export const SUPPORTED_LANGUAGES = [
+    {identifier: "en" , name: "English"},
+    {identifier: "hindi" , name: "Hindi"},
+    {identifier: "kannada" , name: "Kannada"},
+]

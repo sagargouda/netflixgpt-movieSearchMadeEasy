@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 
 function SecondaryContainer(props) {
     const getMovies = useSelector(store=>store.movies)
-  console.log(getMovies)
+  // console.log(getMovies)
     return (
         getMovies && (
             <div className="w-screen bg-black">

@@ -12,7 +12,7 @@ function useGetTrailerVideo(movieId){
     const getMovieTrailer = async() => {
         const data = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`, API_OPTIONS)
         const json = await data.json();
-        console.log(json)
+        // console.log(json)
 
         //      filter only trailer here json.results is an array
         // if there is no trailer just show some video we get from json.results
