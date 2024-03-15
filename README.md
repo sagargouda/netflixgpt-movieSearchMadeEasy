@@ -54,7 +54,9 @@
 - idea was creating a button kind of thing in header and when i click that it should go to new page wheere gpt search is present
 - new page for gpt search which has a search bar and it suggests movie
 - gpt search bar and suggestions
-- Mulri language select
+- Multi language select
+- dynamic options select
+- Working with openAi Api's(free) because i can't afford paid
 
 
 
