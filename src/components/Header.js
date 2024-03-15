@@ -14,6 +14,7 @@ function Header(props) {
 //  for dispatching an action
     const dispatch = useDispatch()
     const user = useSelector(store=>store.user)
+    const showGptSearch  = useSelector(store=>store.gpt.showGptSearch)
 
 
 
@@ -76,13 +77,18 @@ dispatch(toggleGptSearchView())
         {/*    sign out button */}
             { user && (
                 <div className=" flex p-2 mt-0 md:w-2/12 sm:w-2/12 lg:w-3/12  gap-10" >
-                    <select className="p-2 bg-gray-900 text-white m-2" onChange={handleLanguageChange}>
-                        {
-                            SUPPORTED_LANGUAGES.map(lang => <option key={lang.identifier} value={lang.identifier }>{lang.name}</option>)
-                        }
-                    </select>
+                    {
+                        showGptSearch &&
+                        <select className="p-2 bg-gray-900 text-white m-2" onChange={handleLanguageChange}>
+                            {
+                                SUPPORTED_LANGUAGES.map(lang => <option key={lang.identifier}
+                                                                        value={lang.identifier}>{lang.name}</option>)
+                            }
+                        </select>
+                    }
 
-                    <button className="py-2 px-4 mx-2 my-2 rounded-md bg-purple-800 text-white" onClick={handleGpt}>GPT Search</button>
+                    <button className="py-2 px-4 mx-2 my-2 rounded-md bg-purple-800 text-white" onClick={handleGpt}>{showGptSearch ? 'Home Page' : 'Gpt Search'}
+                    </button>
                     <div className="flex flex-row gap-4 w-[50%] mt-4">
                         <img className="w-12 h-12 rounded-3xl" src={user?.photoURL} alt=""/>
                         <FaSignOutAlt className="cursor-pointer mt-3"  title="Sign out" size={23}
