@@ -16,3 +16,5 @@ export const SUPPORTED_LANGUAGES = [
     {identifier: "hindi" , name: "Hindi"},
     {identifier: "kannada" , name: "Kannada"},
 ]
+
+export const OPENAI_KEY = "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"
