@@ -21,6 +21,7 @@ function Header(props) {
     function handleSignOut(){
         signOut(auth).then(() => {
             // if sign out is successful navigate to "/"
+           navigate('/')
         }).catch((error) => {
             // if error happens pass it to navigate('*') which is an error page
             navigate('*')
@@ -71,12 +72,12 @@ dispatch(toggleGptSearchView())
 
 
     return (
-        <div className="absolute flex justify-between w-full px-8 py-2 bg-gradient-to-b from-black max-sm-[500px]:px-0 z-10 ">
-            <img className="w-44 " src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="logo"/>
+        <div className="absolute flex flex-col md:flex-row justify-around w-full px-8 py-2 bg-gradient-to-b from-black max-sm-[500px]:px-0 z-10 ">
+            <img className="w-44 mx-auto md:mx-0" src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="logo"/>
 
         {/*    sign out button */}
             { user && (
-                <div className=" flex p-2 mt-0 md:w-2/12 sm:w-2/12 lg:w-3/12  gap-10" >
+                <div className=" flex justify-around md:justify-between md:gap-5 " >
                     {
                         showGptSearch &&
                         <select className="p-2 bg-gray-900 text-white m-2" onChange={handleLanguageChange}>
@@ -87,13 +88,17 @@ dispatch(toggleGptSearchView())
                         </select>
                     }
 
-                    <button className="py-2 px-4 mx-2 my-2 rounded-md bg-purple-800 text-white" onClick={handleGpt}>{showGptSearch ? 'Home Page' : 'Gpt Search'}
-                    </button>
-                    <div className="flex flex-row gap-4 w-[50%] mt-4">
-                        <img className="w-12 h-12 rounded-3xl" src={user?.photoURL} alt=""/>
-                        <FaSignOutAlt className="cursor-pointer mt-3"  title="Sign out" size={23}
-                                      color="white"/>
-                    </div>
+
+                        <button className="py-2 px-4 mx-2 my-2 rounded-md bg-purple-800 text-white"
+                                onClick={handleGpt}>{showGptSearch ? 'Home Page' : 'Gpt Search'}
+                        </button>
+                        <div className="flex mt-3 md:gap-3">
+                            <img className="hidden md:block w-12 h-12 rounded-3xl" src={user?.photoURL} alt=""/>
+                            <FaSignOutAlt onClick={handleSignOut} className="cursor-pointer mt-3" title="Sign out" size={23}
+                                          color="white"/>
+                        </div>
+
+
 
                 </div>
             )

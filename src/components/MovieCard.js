@@ -15,7 +15,7 @@ function MovieCard({ posterPath, movie }) {
     };
 
     return (
-        <div className="w-48 pr-4" onClick={handleCardClick}>
+        <div className="md:w-48 w-36 pr-4" onClick={handleCardClick}>
             <img className="border-2" src={IMG_CDN_URL + posterPath} alt="Movie Card" />
             {modalOpen && <MovieModal movieModal={movie} isOpen={modalOpen}  />}
         </div>

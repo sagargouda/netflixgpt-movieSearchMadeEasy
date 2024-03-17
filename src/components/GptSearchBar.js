@@ -64,11 +64,11 @@ const promiseArray  = gptMovies.map((searchMovie)=>{
 
 
     return (
-        <div className="pt-[10%] flex  justify-center " onSubmit={(e)=>e.preventDefault()}>
-            <form className="w-1/2  bg-black grid grid-cols-12">
+        <div className="md:pt-[10%] pt-[50%] flex md:justify-center " onSubmit={(e)=>e.preventDefault()}>
+            <form className=" w-full md:w-1/2  bg-black grid grid-cols-12">
                 <input ref={searchText} className="col-span-9 p-4 m-4 " type="text" placeholder={lang[language.lang].gptSearchPlaceholder}/>
 
-                <button className=" col-span-3 m-4 py-2 px-4 rounded-lg bg-red-600 text-white" onClick={handleGptSearchClick}>{lang[language.lang].search}</button>
+                <button className=" col-span-3 m-4 py-2 px-2 rounded-lg bg-red-600 text-white" onClick={handleGptSearchClick}>{lang[language.lang].search}</button>
             </form>
         </div>
     );
